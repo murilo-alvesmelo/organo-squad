@@ -11,7 +11,7 @@ export default function Form(props){
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
-    const squad = [
+    const times = [
         'Ataque',
         'Defesa'
     ]
@@ -54,7 +54,7 @@ export default function Form(props){
             <ListaSuspensa 
                 obrigatorio={true} 
                 label="Time" 
-                itens={squad}
+                itens={times}
                 valor={time}
                 isAlterado={(valor) => setTime(valor)}
             />
