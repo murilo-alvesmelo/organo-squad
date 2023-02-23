@@ -11,20 +11,19 @@ export default function Form(props){
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
-    const times = [
-        'Ataque',
-        'Defesa'
-    ]
-
-    const handleSubmit = (event) =>{
+    const handleSubmit = async(event) =>{
         event.preventDefault()
-        props.isJogadores({
+        await props.isJogadores({
             nome,
             cargo,
             imagem,
             time
         })
-    }
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
+    } 
 
     return(
         <section className="form">
@@ -54,7 +53,7 @@ export default function Form(props){
             <ListaSuspensa 
                 obrigatorio={true} 
                 label="Time" 
-                itens={times}
+                itens={props.times}
                 valor={time}
                 isAlterado={(valor) => setTime(valor)}
             />

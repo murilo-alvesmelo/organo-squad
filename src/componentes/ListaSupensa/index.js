@@ -4,7 +4,8 @@ export default function ListaSuspensa(props){
     return(
         <div className='lista-suspensa'>
             <label>{props.label}</label>
-            <select 
+            <select
+                value={props.valor}
                 required={props.obrigatorio}
                 onChange={e => props.isAlterado(e.target.value)}
             >

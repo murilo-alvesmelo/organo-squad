@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Banner from './componentes/Banner';
 import Form from './componentes/Form';
 import Times from './componentes/Times';
+import Rodape from './componentes/Rodape';
 
 function App() {
 
@@ -17,20 +18,25 @@ function App() {
       corPrimaria:  '#82CFFA',
       corSecundaria: '#E8F8FF'
     },
-]
+  ]
 
   const[jogadores, setJogadores] = useState([])
 
   const isNovoJogador =(jogador)=>{
     setJogadores([...jogadores, jogador])
-    console.log(jogadores)
   }
-
   return (
     <div>
       <Banner/>
-      <Form isJogadores={jogador => isNovoJogador(jogador)}/>
-      {times.map(time => <Times key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSecundaria}/>)}
+      <Form isJogadores={jogador => isNovoJogador(jogador)} times={times.map(i=> i.nome)}/>
+      {times.map(time => <Times 
+        key={time.nome} 
+        nomeTime={time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria}
+        jogadores={jogadores.filter(j => j.time === time.nome)} 
+      />)}
+      <Rodape/>
     </div>
   );
 }
