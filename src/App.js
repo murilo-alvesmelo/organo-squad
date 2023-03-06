@@ -4,6 +4,7 @@ import Banner from './componentes/Banner';
 import Form from './componentes/Form';
 import Times from './componentes/Times';
 import Rodape from './componentes/Rodape';
+ 
 
 function App() {
 

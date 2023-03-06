@@ -5,10 +5,12 @@ export default function ListaSuspensa(props){
         <div className='lista-suspensa'>
             <label>{props.label}</label>
             <select
+                placeholder='Escolha'
                 value={props.valor}
                 required={props.obrigatorio}
                 onChange={e => props.isAlterado(e.target.value)}
             >
+                <option value='' disabled selected>Escolha o operador</option>
                 {props.itens.map(i => {
                     return <option key={i}>{i}</option>
                 })}
