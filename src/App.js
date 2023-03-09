@@ -4,28 +4,39 @@ import Banner from './componentes/Banner';
 import Form from './componentes/Form';
 import Times from './componentes/Times';
 import Rodape from './componentes/Rodape';
- 
+
 
 function App() {
 
-  const times = [
+  const[jogadores, setJogadores] = useState([])
+  const [times, setTimes] = useState([
     {
       nome: 'Ataque',
-      corPrimaria:  '#E06B69',
-      corSecundaria: '#FDE7E8'
+      cor: '#FDE7E8'
     },
     {
       nome: 'Defesa',
-      corPrimaria:  '#82CFFA',
-      corSecundaria: '#E8F8FF'
+      cor: '#E8F8FF'
     },
-  ]
-
-  const[jogadores, setJogadores] = useState([])
+  ])
 
   const isNovoJogador =(jogador)=>{
     setJogadores([...jogadores, jogador])
   }
+
+  function DeletarJogador(index){
+    alert(index)
+  }
+
+  function mudarCorTime(cor, nome){
+    setTimes(times.map(time => {
+      if(time.nome === nome){
+        time.cor = cor
+      }
+      return time
+    }))
+  }
+
   return (
     <div>
       <Banner/>
@@ -33,9 +44,10 @@ function App() {
       {times.map(time => <Times 
         key={time.nome} 
         nomeTime={time.nome} 
-        corPrimaria={time.corPrimaria} 
-        corSecundaria={time.corSecundaria}
+        cor={time.cor}
         jogadores={jogadores.filter(j => j.time === time.nome)} 
+        isDeletar={DeletarJogador}
+        mudarCorTime={mudarCorTime}
       />)}
       <Rodape/>
     </div>
