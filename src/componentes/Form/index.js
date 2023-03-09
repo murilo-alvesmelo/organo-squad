@@ -4,30 +4,26 @@ import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSupensa";
 import './Form.css'
 
-import characters from "../../characters";
-
 export default function Form(props){
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
-    const [character, setCharacter] = useState('')
     const [time, setTime] = useState('')
+    const [image, setImage] = useState('')
 
     const handleSubmit = async(event) =>{
         event.preventDefault()
         await props.isJogadores({
             nome,
             cargo,
-            character,
-            time
+            time,
+            image
         })
         setNome('')
         setCargo('')
-        setCharacter('')
         setTime('')
+        setImage('')
     }
-
-    console.log(character)
 
     return(
         <section className="form">
@@ -47,26 +43,19 @@ export default function Form(props){
                 isAlterado={(valor) => setCargo(valor)}
                 valor={cargo}
             />
-            {/* <CampoTexto 
+            <CampoTexto 
                 obrigatorio={true} 
                 label="Imagem" 
                 placeholder="Informe o endereço da imagem"
-                isAlterado={(valor) => setImagem(valor)}
-                valor={imagem}
-            /> */}
+                isAlterado={(valor) => setImage(valor)}
+                valor={image}
+            />
             <ListaSuspensa 
                 obrigatorio={true} 
                 label="Time" 
                 itens={props.times}
                 valor={time}
                 isAlterado={(valor) => setTime(valor)}
-            />
-            <ListaSuspensa 
-                obrigatorio={true} 
-                label="Operador" 
-                itens={characters.map(i => i.nick)}
-                valor={character}
-                isAlterado={(valor) => setCharacter(valor)}
             />
 
             <Botao texto="Criar card"/>

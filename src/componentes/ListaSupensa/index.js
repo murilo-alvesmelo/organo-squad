@@ -1,6 +1,7 @@
 import './ListaSuspensa.css'
 
 export default function ListaSuspensa(props){
+
     return(
         <div className='lista-suspensa'>
             <label>{props.label}</label>
@@ -10,7 +11,7 @@ export default function ListaSuspensa(props){
                 required={props.obrigatorio}
                 onChange={e => props.isAlterado(e.target.value)}
             >
-                <option value='' disabled selected>Escolha o operador</option>
+                <option value='' disabled selected>Escolha</option>
                 {props.itens.map(i => {
                     return <option key={i}>{i}</option>
                 })}
