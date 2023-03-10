@@ -6,7 +6,7 @@ export default function Times(props){
     return(
     (props.jogadores.length > 0) ? 
     <section className="time" style={{ backgroundColor:  hexToRgba(props.cor, '0.6')}}>
-        <input type='color' className='input-cor' value={props.cor} onChange={e => props.mudarCorTime(e.target.value, props.nomeTime)}/>
+        <input type='color' className='input-cor' value={props.cor} onChange={e => props.mudarCorTime(e.target.value, props.timeId)}/>
         <h3 style={{ borderBottomColor: props.cor }}>{props.nomeTime}</h3>
         <div className='jogadores'>
             {props.jogadores.map((j, i)=> {
@@ -17,7 +17,7 @@ export default function Times(props){
                         cargo={j.cargo} 
                         imagem={j.image}
                         corDeFundo={hexToRgba(props.cor, '1')}    
-                        isDeletar={props.isDeletar}
+                        isDeletar={() => props.isDeletar(props.timeId)}
                     />
                 )
             })}
