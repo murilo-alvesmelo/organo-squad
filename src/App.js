@@ -4,6 +4,7 @@ import Banner from './componentes/Banner';
 import Form from './componentes/Form';
 import Times from './componentes/Times';
 import Rodape from './componentes/Rodape';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
@@ -11,10 +12,12 @@ function App() {
   const[jogadores, setJogadores] = useState([])
   const [times, setTimes] = useState([
     {
+      id: uuidv4(),
       nome: 'Ataque',
       cor: '#FDE7E8'
     },
     {
+      id: uuidv4(),
       nome: 'Defesa',
       cor: '#E8F8FF'
     },
@@ -24,25 +27,35 @@ function App() {
     setJogadores([...jogadores, jogador])
   }
 
-  function DeletarJogador(index){
-    alert(index)
+  function DeletarJogador(id){
+    console.log(id)
   }
 
-  function mudarCorTime(cor, nome){
+  function mudarCorTime(cor, id){
     setTimes(times.map(time => {
-      if(time.nome === nome){
+      if(time.id === id){
         time.cor = cor
       }
       return time
     }))
   }
 
+  function cadastrarTime(novoTime){
+    setTimes([...times, {id: uuidv4(), ...novoTime}])
+  }
+
   return (
     <div>
       <Banner/>
-      <Form isJogadores={jogador => isNovoJogador(jogador)} times={times.map(i=> i.nome)}/>
+      <Form 
+        cadastrarTime={cadastrarTime}
+        isJogadores={jogador => isNovoJogador(jogador)} 
+        times={times.map(i=> i.nome)}
+
+      />
       {times.map(time => <Times 
-        key={time.nome} 
+        key={time.id} 
+        timeId={time.id}
         nomeTime={time.nome} 
         cor={time.cor}
         jogadores={jogadores.filter(j => j.time === time.nome)} 
