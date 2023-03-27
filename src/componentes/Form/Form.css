@@ -1,12 +1,14 @@
 .form {
     display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
     justify-content: center;
-    margin: 80px;
+    margin: 80px 50px
 }
 
 .form form {
-    max-width: 80%;
-    background-color: #F7F7F7;
+    flex: 1;
+    background-color: #e0e0e0;
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 36px;

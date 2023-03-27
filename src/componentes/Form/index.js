@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Botao from "../Botao";
-import CampoTexto from "../CampoTexto";
+import Campo from "../Campo";
 import ListaSuspensa from "../ListaSupensa";
 import './Form.css'
 
@@ -32,21 +32,21 @@ export default function Form(props){
         <section className="form">
             <form onSubmit={handleSubmit}>
             <h2>Preencha os dados para criar o card do jogador.</h2>
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Nome" 
                     placeholder="Digite seu nome" 
                     isAlterado={(valor) => setNome(valor)} 
                     valor={nome}
                 />
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Cargo" 
                     placeholder="Digite seu cargo"
                     isAlterado={(valor) => setCargo(valor)}
                     valor={cargo}
                 />
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Imagem" 
                     placeholder="Informe o endereço da imagem"
@@ -70,15 +70,16 @@ export default function Form(props){
                 setCorTime('')
             }}>
             <h2>Criar um novo time</h2>
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Nome" 
                     placeholder="Digite o nome do time" 
                     isAlterado={(valor) => setNomeTime(valor)} 
                     valor={nomeTime}
                 />
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
+                    type='color'
                     label="Cor" 
                     placeholder="Digite a cor do time"
                     isAlterado={(valor) => setCorTime(valor)}
